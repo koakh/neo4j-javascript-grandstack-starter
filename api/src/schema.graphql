@@ -40,4 +40,12 @@ type Query {
     @cypher(
       statement: "MATCH (u:User) WHERE u.name CONTAINS $substring RETURN u"
     )
+  businessBySubstring(substring: String): [Business]
+    @cypher(
+      statement: "MATCH (b:Business) WHERE b.name CONTAINS $substring RETURN b"
+    )
+  categoryBySubstring(substring: String): [Category]
+    @cypher(
+      statement: "MATCH (c:Category) WHERE c.name CONTAINS $substring RETURN c"
+    )
 }

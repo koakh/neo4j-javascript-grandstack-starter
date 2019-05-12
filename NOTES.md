@@ -121,3 +121,7 @@ curl -X POST \
   -H 'Content-Type: application/json' \
   -d '{ "query" : "{User {id name}}" }'
 ```
+
+## API
+
+add  `-e js,graphql` to start-dev to watch for .graphql files

@@ -1,4 +1,6 @@
 # TODO
 
-- [ ] Debug
-- [ ] Typescript 
+- [ ] Debug API/UI
+- [ ] NEST
+  - [ ] TypeScript
+  - [ ] Auth/ JWT
