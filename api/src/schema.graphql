@@ -51,8 +51,8 @@ type Query {
 }
 
 type _AddUserFriendsPayload {
-  from: User!
-  to: User!
+  from: User
+  to: User
 }
 
 type Mutation {
@@ -60,7 +60,29 @@ type Mutation {
   statement:"""
     MATCH (`user_from`:`User` {id: $from.id})
     MATCH (`user_to`:`User` {id: $to.id})
-    CREATE (`user_from`)-[`friends_relation`:`FRIENDS`]->(`user_to`)
+    MERGE (`user_from`)-[`friends_relation`:`FRIENDS`]->(`user_to`)
     RETURN `friends_relation` { from: `user_from` { .name } ,to: `user_to` { .name }  } AS `_AddUserFriendsPayload`;
   """)     
 }
+
+# 1. test query log in neo4j
+# MATCH (`user_from`:`User` {id: $from.id})
+# MATCH (`user_to`:`User` {id: $to.id})
+# CREATE (`user_from`)-[`friends_relation`:`FRIENDS`]->(`user_to`)
+# RETURN `friends_relation` { from: `user_from` { .name } ,to: `user_to` { .name }  } AS `_AddUserFriendsPayload`;
+# 
+# with :params {"from": { id: "u3" },"to": { id: "u4" }}
+#
+# returns in neo4j
+# {
+#   "from": {
+#     "name": "Jenny"
+#   },
+#   "to": {
+#     "name": "Angie"
+#   }
+# }
+
+# 2 test
+# MATCH (`user_from`:`User` {id: $from})-[friends_relation:FRIENDS]-(`user_to`: User)
+# RETURN `user_from`, `user_to`
