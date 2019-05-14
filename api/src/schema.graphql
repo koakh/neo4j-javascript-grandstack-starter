@@ -49,3 +49,18 @@ type Query {
       statement: "MATCH (c:Category) WHERE c.name CONTAINS $substring RETURN c"
     )
 }
+
+type _AddUserFriendsPayload {
+  from: User!
+  to: User!
+}
+
+type Mutation {
+  AddUserFriends(from: _UserInput!, to: _UserInput!): _AddUserFriendsPayload @cypher(
+  statement:"""
+    MATCH (`user_from`:`User` {id: $from.id})
+    MATCH (`user_to`:`User` {id: $to.id})
+    CREATE (`user_from`)-[`friends_relation`:`FRIENDS`]->(`user_to`)
+    RETURN `friends_relation` { from: `user_from` { .name } ,to: `user_to` { .name }  } AS `_AddUserFriendsPayload`;
+  """)     
+}
