@@ -27,19 +27,9 @@ MERGE (u1)-[r1:FRIENDS]->(u2)
 MERGE (u2)-[r2:FRIENDS]->(u1)
 RETURN u1,u2
 
-:params {from: 60, to: 48}
-RETURN $from
-
+:params {"from": { id: "u3" },"to": { id: "u4" }}
 :params
-{
-  "from": "u3",
-  "to": "u4"
-}
+RETURN $from
 
 For clear params in neo4j-browser type :params {}.
 For additional help type :help params.
-
-MATCH (from:User {id: $from})
-MATCH (to:User {id: $to})
-MERGE (from)-[:FRIENDS]->(to)
-RETURN from,to

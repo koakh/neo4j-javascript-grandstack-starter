@@ -21,8 +21,15 @@ const app = express();
 const schema = makeAugmentedSchema({
   typeDefs,
   config: {
-    query: true,    // default
-    mutation: true  // default
+    // default
+    // query: false,
+    // mutation: false
+    // query: {
+    //   exclude: ["User"]
+    // },
+    // mutation: {
+    //   exclude: ["User"]
+    // }
   }  
 });
 

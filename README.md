@@ -104,6 +104,5 @@ If you want to load the example DB after the services have been started:
 docker-compose run api npm run seedDb
 ```
 
-
 This project is licensed under the Apache License v2.
 Copyright (c) 2018 Neo4j, Inc.
