@@ -25,11 +25,11 @@ const schema = makeAugmentedSchema({
     // query: false,
     // mutation: false
     // query: {
-    //   exclude: ["User"]
+    //   exclude: ["AddUserFriends"]
     // },
-    // mutation: {
-    //   exclude: ["User"]
-    // }
+    mutation: {
+      exclude: ["AddUserFriends"]
+    }
   }  
 });
 

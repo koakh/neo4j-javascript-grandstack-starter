@@ -1,5 +1,9 @@
 # Notes
 
+## Links
+
+- [GraphQL API Configuration With neo4j-graphql.js](https://blog.grandstack.io/graphql-api-configuration-with-neo4j-graphql-js-bf7a1331c793)
+
 ## Install
 
 start with [README.md](https://github.com/grand-stack/grand-stack-starter), or read it locally

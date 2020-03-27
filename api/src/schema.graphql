@@ -67,7 +67,7 @@ type Mutation {
   statement:"""
     MATCH (`user_from`:`User` {id: $from.id})
     MATCH (`user_to`:`User` {id: $to.id})
-    CREATE (`user_from`)-[`friends_relation`:`FRIENDS`]->(`user_to`)
+    MERGE (`user_from`)-[`friends_relation`:`FRIENDS`]->(`user_to`)
     RETURN user_from
     // RETURN `friends_relation` { from: `user_from` , to: `user_to` } AS `_AddUserFriendsPayload`;
   """)     
@@ -91,6 +91,10 @@ type Mutation {
 #   }
 # }
 
-# 2 test
+# 2. test
 # MATCH (`user_from`:`User` {id: $from})-[friends_relation:FRIENDS]-(`user_to`: User)
 # RETURN `user_from`, `user_to`
+
+## 3. delete all re-created relations
+
+# MATCH (`user_from`:`User` {id: $from.id})-[r]->(`user_to`:`User` {id: $to.id}) DELETE r
